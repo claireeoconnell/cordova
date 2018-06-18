@@ -79,4 +79,27 @@
     </table>
 </div>
 
+<div style="display:<?php echo $disp_gnomad ?>">
+    <h5><span>gnomAD</span></h5>
+    <table border="0" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td><img src="<?php print site_url("variant/freq?value=".$gnomad_afr_af*100); ?>" /><br /><small><?php print $gnomad_afr_label ?></small><br /><span>African</span></td>
+          <td><img src="<?php print site_url("variant/freq?value=".$gnomad_amr_af*100); ?>" /><br /><small><?php print $gnomad_amr_label ?></small><br /><span>American (Latino)</span></td>
+          <td><img src="<?php print site_url("variant/freq?value=".$gnomad_fin_af*100); ?>" /><br /><small><?php print $gnomad_fin_label ?></small><br /><span>European (Finnish)</span></td>
+        </tr>  
+        <tr>
+          <td><img src="<?php print site_url("variant/freq?value=".$gnomad_nfe_af*100); ?>" /><br /><small><?php print $gnomad_nfe_label ?></small><br /><span>European (non-Finnish)</span></td>
+          <td><img src="<?php print site_url("variant/freq?value=".$gnomad_eas_af*100); ?>" /><br /><small><?php print $gnomad_eas_label ?></small><br /><span>East Asian</span></td>
+          <td><img src="<?php print site_url("variant/freq?value=".$gnomad_sas_af*100); ?>" /><br /><small><?php print $gnomad_sas_label ?></small><br /><span>South Asian</span></td>
+        </tr>  
+        <tr>
+          <td><img src="<?php print site_url("variant/freq?value=".$gnomad_oth_af*100); ?>" /><br /><small><?php print $gnomad_oth_label ?></small><br /><span>Other</span></td>
+          <td><img src="<?php print site_url("variant/freq?value=".$gnomad_all_af*100); ?>" /><br /><small><?php print $gnomad_all_label ?></small><br /><span>All populations</span></td>
+          <td><div style="width:200px;"></div></td>
+        </tr>  
+      </tbody>
+    </table>
+</div>
+
   </div><!-- #frequency -->

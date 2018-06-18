@@ -39,7 +39,7 @@ $config['mem_per_row_ratio'] = 300;
 | If users have questions, who should they contact?
 |
 */
-$config['contact_email'] = 'morl@uiowa.edu';
+$config['contact_email'] = 'rmarini@healthcare.uiowa.edu';
 
 /*
 |--------------------------------------------------------------------------
@@ -111,7 +111,7 @@ $config['strings']['footer_info']        = '<span>&copy; 2011&ndash;'.date('Y').
  * Unless you have a good reason to change it, it is best just to leave 
  * this alone.
  */
-$config['tables']['vd_live'] = 'variations_8_1_2'; // READ ABOVE before changing, variations_8_1_1_dev
+$config['tables']['vd_live'] = 'variations_8_2'; // READ ABOVE before changing, variations_8_1_1_dev
 
 /**
  * Variation data that has been edited with the editor interface will
@@ -193,9 +193,10 @@ $config['pathogenicities'] = array(
 |
 */
 $config['frequencies'] = array(
-   'evs',         // Exome Variant Server (EVS)
-   '1000genomes', // 1000 Genomes
-   'exac',        // ExAC
+//    'evs',         // Exome Variant Server (EVS)
+//    '1000genomes', // 1000 Genomes
+//    'exac',        // ExAC
+    'gnomad',    //gnomad
    'otoscope',    // OtoSCOPE
 );
 
@@ -312,22 +313,16 @@ $config['api']['variantlist'] = array( // type=variantlist
     'otoscope_tr_af',
     'otoscope_all_ac',
     'otoscope_all_af',
-    'evs_ea_ac',
-    'evs_ea_af',
-    'evs_aa_ac', 
-    'evs_aa_af',
-    'evs_all_ac', 
-    'evs_all_af',
-    'tg_afr_ac',
-    'tg_afr_af',
-    'tg_eur_ac',
-    'tg_eur_af',
-    'tg_amr_ac',
-    'tg_amr_af',
-    'tg_asn_ac',
-    'tg_asn_af',
-    'tg_all_ac',
-    'tg_all_af',
+    'gnomad_afr_ac',
+    'gnomad_afr_af',
+    'gnomad_eur_ac',
+    'gnomad_eur_af',
+    'gnomad_amr_ac',
+    'gnomad_amr_af',
+    'gnomad_asn_ac',
+    'gnomad_asn_af',
+    'gnomad_all_ac',
+    'gnomad_all_af',
     'id',
 );
 

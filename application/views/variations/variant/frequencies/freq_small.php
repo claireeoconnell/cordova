@@ -59,6 +59,22 @@
         </td>
       </tr>
     </table>
+    
+    <table border="0" cellspacing="0" cellpadding="0" style="display:<?php echo $disp_gnomad?>">
+      <tr>
+        <th scope="row"><h5>gnomAD</h5></th>
+        <td>
+          <div><img src="<?php print site_url("variant/freq?value=".($gnomad_afr_af*100)."&amp;small"); ?>" /><br /><small><?php print $gnomad_afr_label ?></small><br /><span>AFR</span><br /><strong>African</strong></div>
+          <div><img src="<?php print site_url("variant/freq?value=".($gnomad_amr_af*100)."&amp;small"); ?>" /><br /><small><?php print $gnomad_amr_label ?></small><br /><span>AMR</span><br /><strong>American (Latino)</strong></div>
+          <div><img src="<?php print site_url("variant/freq?value=".($gnomad_fin_af*100)."&amp;small"); ?>" /><br /><small><?php print $gnomad_fin_label ?></small><br /><span>FIN</span><br /><strong>European (Finnish)</strong></div>
+          <div><img src="<?php print site_url("variant/freq?value=".($gnomad_nfe_af*100)."&amp;small"); ?>" /><br /><small><?php print $gnomad_nfe_label ?></small><br /><span>NFE</span><br /><strong>European (non-Finnish)</strong></div>
+          <div><img src="<?php print site_url("variant/freq?value=".($gnomad_eas_af*100)."&amp;small"); ?>" /><br /><small><?php print $gnomad_eas_label ?></small><br /><span>EAS</span><br /><strong>East Asian</strong></div>
+          <div><img src="<?php print site_url("variant/freq?value=".($gnomad_sas_af*100)."&amp;small"); ?>" /><br /><small><?php print $gnomad_sas_label ?></small><br /><span>SAS</span><br /><strong>South Asian</strong></div>
+          <div><img src="<?php print site_url("variant/freq?value=".($gnomad_oth_af*100)."&amp;small"); ?>" /><br /><small><?php print $gnomad_oth_label ?></small><br /><span>OTH</span><br /><strong>Other</strong></div>
+          <div><img src="<?php print site_url("variant/freq?value=".($gnomad_all_af*100)."&amp;small"); ?>" /><br /><small><?php print $gnomad_all_label ?></small><br /><span>ALL</span><br /><strong>All populations</strong></div>
+        </td>
+      </tr>
+    </table>
 
   </div><!-- #frequency-small -->
 

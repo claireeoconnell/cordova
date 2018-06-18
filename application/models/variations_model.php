@@ -153,6 +153,8 @@ class Variations_model extends MY_Model {
   /**
    * Get Annotation Data
    *
+   * NOTE:  Out of sync with gnomad update to database
+   *
    * NOTE: This function should ONLY be used to *add* new data to the variation database.
    *       Never use this function for variants that already exist in the database
    *       because it will take way too long (it pulls from several large databases).
@@ -693,7 +695,6 @@ class Variations_model extends MY_Model {
   	if ($query->num_rows() === 0) {
   		return NULL;
   	}
-  	
   	return $query->result();
   	
   }
@@ -1814,6 +1815,7 @@ EOF;
     $data['disp_1000g'] = in_array('1000genomes', $freqs) ? 'block' : 'none';
     $data['disp_exac'] = in_array('exac', $freqs) ? 'block' : 'none';
     $data['disp_otoscope'] = in_array('otoscope', $freqs) ? 'block' : 'none';
+    $data['disp_gnomad'] = in_array('gnomad',$freqs) ? 'block' : 'none';
     
     // Frequency computations
     $zero_label = 'Unseen (0.000)'; // What to display when 0 alleles are seen
@@ -1895,22 +1897,52 @@ EOF;
     }
     else {
       // Don't display ExAC
-      $data['tg_afr_af'] = 0;
-      $data['tg_amr_af'] = 0;
-      $data['tg_fin_af'] = 0;
-      $data['tg_nfe_af'] = 0;
-      $data['tg_eas_af'] = 0;
-      $data['tg_sas_af'] = 0;
-      $data['tg_oth_af'] = 0;
-      $data['tg_all_af'] = 0;
-      $data['tg_afr_label'] = '(No data)';
-      $data['tg_fin_label'] = '(No data)';
-      $data['tg_nfe_label'] = '(No data)';
-      $data['tg_amr_label'] = '(No data)';
-      $data['tg_eas_label'] = '(No data)';
-      $data['tg_sas_label'] = '(No data)';
-      $data['tg_oth_label'] = '(No data)';
-      $data['tg_all_label'] = '(No data)';
+      $data['exac_afr_af'] = 0;
+      $data['exac_amr_af'] = 0;
+      $data['exac_fin_af'] = 0;
+      $data['exac_nfe_af'] = 0;
+      $data['exac_eas_af'] = 0;
+      $data['exac_sas_af'] = 0;
+      $data['exac_oth_af'] = 0;
+      $data['exac_all_af'] = 0;
+      $data['exac_afr_label'] = '(No data)';
+      $data['exac_fin_label'] = '(No data)';
+      $data['exac_nfe_label'] = '(No data)';
+      $data['exac_amr_label'] = '(No data)';
+      $data['exac_eas_label'] = '(No data)';
+      $data['exac_sas_label'] = '(No data)';
+      $data['exac_oth_label'] = '(No data)';
+      $data['exac_all_label'] = '(No data)';
+    }
+    if (in_array('gnomad', $freqs)) {
+        // Display gnomad
+        ($data['gnomad_afr_af'] == '') ? $data['gnomad_afr_label'] = '(No data)' : ($data['gnomad_afr_af'] == 0) ? $data['gnomad_afr_label'] = $zero_label : $data['gnomad_afr_label'] = $data['gnomad_afr_ac'] . "/" . intval($data['gnomad_afr_ac']/$data['gnomad_afr_af']) . " (" . number_format((float) $data['gnomad_afr_af'], 3, '.', '') . ")";
+        ($data['gnomad_amr_af'] == '') ? $data['gnomad_amr_label'] = '(No data)' : ($data['gnomad_amr_af'] == 0) ? $data['gnomad_amr_label'] = $zero_label : $data['gnomad_amr_label'] = $data['gnomad_amr_ac'] . "/" . intval($data['gnomad_amr_ac']/$data['gnomad_amr_af']) . " (" . number_format((float) $data['gnomad_amr_af'], 3, '.', '') . ")";
+        ($data['gnomad_fin_af'] == '') ? $data['gnomad_fin_label'] = '(No data)' : ($data['gnomad_fin_af'] == 0) ? $data['gnomad_fin_label'] = $zero_label : $data['gnomad_fin_label'] = $data['gnomad_fin_ac'] . "/" . intval($data['gnomad_fin_ac']/$data['gnomad_fin_af']) . " (" . number_format((float) $data['gnomad_fin_af'], 3, '.', '') . ")";
+        ($data['gnomad_nfe_af'] == '') ? $data['gnomad_nfe_label'] = '(No data)' : ($data['gnomad_nfe_af'] == 0) ? $data['gnomad_nfe_label'] = $zero_label : $data['gnomad_nfe_label'] = $data['gnomad_nfe_ac'] . "/" . intval($data['gnomad_nfe_ac']/$data['gnomad_nfe_af']) . " (" . number_format((float) $data['gnomad_nfe_af'], 3, '.', '') . ")";
+        ($data['gnomad_sas_af'] == '') ? $data['gnomad_sas_label'] = '(No data)' : ($data['gnomad_sas_af'] == 0) ? $data['gnomad_sas_label'] = $zero_label : $data['gnomad_sas_label'] = $data['gnomad_sas_ac'] . "/" . intval($data['gnomad_sas_ac']/$data['gnomad_sas_af']) . " (" . number_format((float) $data['gnomad_sas_af'], 3, '.', '') . ")";
+        ($data['gnomad_eas_af'] == '') ? $data['gnomad_eas_label'] = '(No data)' : ($data['gnomad_eas_af'] == 0) ? $data['gnomad_eas_label'] = $zero_label : $data['gnomad_eas_label'] = $data['gnomad_eas_ac'] . "/" . intval($data['gnomad_eas_ac']/$data['gnomad_eas_af']) . " (" . number_format((float) $data['gnomad_eas_af'], 3, '.', '') . ")";
+        ($data['gnomad_oth_af'] == '') ? $data['gnomad_oth_label'] = '(No data)' : ($data['gnomad_oth_af'] == 0) ? $data['gnomad_oth_label'] = $zero_label : $data['gnomad_oth_label'] = $data['gnomad_oth_ac'] . "/" . intval($data['gnomad_oth_ac']/$data['gnomad_oth_af']) . " (" . number_format((float) $data['gnomad_oth_af'], 3, '.', '') . ")";
+        ($data['gnomad_all_af'] == '') ? $data['gnomad_all_label'] = '(No data)' : ($data['gnomad_all_af'] == 0) ? $data['gnomad_all_label'] = $zero_label : $data['gnomad_all_label'] = $data['gnomad_all_ac'] . "/" . intval($data['gnomad_all_ac']/$data['gnomad_all_af']) . " (" . number_format((float) $data['gnomad_all_af'], 3, '.', '') . ")";
+    }
+    else {
+        // Don't display gnomad
+        $data['gnomad_afr_af'] = 0;
+        $data['gnomad_amr_af'] = 0;
+        $data['gnomad_fin_af'] = 0;
+        $data['gnomad_nfe_af'] = 0;
+        $data['gnomad_eas_af'] = 0;
+        $data['gnomad_sas_af'] = 0;
+        $data['gnomad_oth_af'] = 0;
+        $data['gnomad_all_af'] = 0;
+        $data['gnomad_afr_label'] = '(No data)';
+        $data['gnomad_fin_label'] = '(No data)';
+        $data['gnomad_nfe_label'] = '(No data)';
+        $data['gnomad_amr_label'] = '(No data)';
+        $data['gnomad_eas_label'] = '(No data)';
+        $data['gnomad_sas_label'] = '(No data)';
+        $data['gnomad_oth_label'] = '(No data)';
+        $data['gnomad_all_label'] = '(No data)';
     }
     
     return $data;

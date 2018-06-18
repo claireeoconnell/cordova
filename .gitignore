@@ -16,7 +16,13 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 
-application/third_party/pChart/
-application/third_party/dompdf/
+application/third_party/pChart/*
+application/third_party/dompdf/*
 
-assets/public/mysql_scripts/import_from_tsv.dvd.sh
+DVD_v8.1.2018-01-17-1330.GNOMAD.vcf.gz
+DVD_v8.1.2018-01-17-1330.GNOMAD.vcf.gz.tbi
+VCF2DVD.GNOMAD.map.txt
+
+assets/public/*
+!assets/public/css/*
+!assets/public/js/*
