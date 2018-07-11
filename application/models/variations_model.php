@@ -679,7 +679,7 @@ class Variations_model extends MY_Model {
   	}
   	
 	$queryString = $this->fuzzy_position_array_search_or_not($position, $table);
-  	
+	
   	$query = $this->db->query($queryString);
   	
   	if ($query->num_rows() === 0) {
@@ -691,10 +691,13 @@ class Variations_model extends MY_Model {
   	$query = NULL;
   	$query = $this->db->query($queryString);
   	
+  	//dev_print_stop([$position, $queryString, $query->result()],"models/variations_model.php/get_variants_by_position_array() @ line 694");
+  	
   	// Still no result? This chr:pos:ref>alt doesn't exist!
   	if ($query->num_rows() === 0) {
   		return NULL;
   	}
+  	
   	return $query->result();
   	
   }

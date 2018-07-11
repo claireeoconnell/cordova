@@ -744,6 +744,8 @@ class Variations extends MY_Controller {
   	$positionAndAllele = $this->format_position_from_url_safe($positionUrlSafe);
   	$variants = $this->variations_model->get_variants_by_position_array($positionAndAllele);
   	
+//   	dev_print_stop([$positionAndAllele,$variants],"controllers/variations.php/show_variant_with_position() @ line 747");
+  	
   	if(count($variants) === 1){
   		//a single variant found
   		

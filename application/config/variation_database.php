@@ -111,7 +111,7 @@ $config['strings']['footer_info']        = '<span>&copy; 2011&ndash;'.date('Y').
  * Unless you have a good reason to change it, it is best just to leave 
  * this alone.
  */
-$config['tables']['vd_live'] = 'variations_8_2'; // READ ABOVE before changing, variations_8_1_1_dev
+$config['tables']['vd_live'] = 'variations_gnomad_dev'; // READ ABOVE before changing, variations_8_1_1_dev
 
 /**
  * Variation data that has been edited with the editor interface will
@@ -128,7 +128,7 @@ $config['tables']['vd_live'] = 'variations_8_2'; // READ ABOVE before changing, 
  * Unless you have a good reason to change it, it is best just to leave 
  * this alone.
  */
-$config['tables']['vd_queue'] = 'variations_queue_8_dev'; // READ ABOVE before changing
+$config['tables']['vd_queue'] = 'variations_queue_gnomad_dev'; // READ ABOVE before changing
 
 /**
  * This table holds data on the number of variants in each gene.
